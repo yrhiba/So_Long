@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_intdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+        */
+/*   By: yrhiba <yrhiba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 22:16:04 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/24 21:59:53 by yrhiba@stud      ###   ########.fr       */
+/*   Created: 2023/01/10 20:33:11 by yrhiba            #+#    #+#             */
+/*   Updated: 2023/01/10 20:34:27 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+int	*ft_intdup(int n)
 {
-	t_so_long	*so_long;
+	int	*a;
 
-	if (my_so_long_init(&so_long) == -1)
-		return (perror("1"), errno);
-	return (0);
+	a = (int *)malloc(sizeof(int));
+	if (!a)
+		return (NULL);
+	return (*a = n, a);
 }

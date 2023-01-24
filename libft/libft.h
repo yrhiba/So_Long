@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: yrhiba <yrhiba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 02:03:58 by yrhiba            #+#    #+#             */
-/*   Updated: 2022/11/21 22:19:33 by yrhiba           ###   ########.fr       */
+/*   Updated: 2023/01/13 10:38:07 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <limits.h>
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -76,6 +77,7 @@ char					*ft_precision_s(char *s, t_print *tab);
 char					*ft_zerospaces_s(char *s, int c, int t_len);
 
 int						ft_printf(const char *format, ...);
+void					*ft_sprintf(const char *format, ...);
 
 int						ft_format(const char *format, int i, t_print *tab);
 
@@ -132,6 +134,7 @@ size_t					ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t					ft_strlcat(char *dst, const char *src, size_t dstsize);
 char					*ft_strchr(const char *s, int c);
 char					*ft_strrchr(const char *s, int c);
+int						ft_strcmp(char *s1, char *s2);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
 void					*ft_memchr(const void *s, int c, size_t n);
 int						ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -164,5 +167,9 @@ void					ft_lstclear(t_list **lst, void (*del)(void *));
 void					ft_lstiter(t_list *lst, void (*f)(void *));
 t_list					*ft_lstmap(t_list *lst, void *(*f)(void *),
 							void (*del)(void *));
+
+int						*ft_intdup(int n);
+
+int						ft_isint(char *str);
 
 #endif

@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   my_list_push_front.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+        */
+/*   By: yrhiba <yrhiba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 22:16:04 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/24 21:59:53 by yrhiba@stud      ###   ########.fr       */
+/*   Created: 2023/01/09 11:46:38 by yrhiba            #+#    #+#             */
+/*   Updated: 2023/01/10 20:47:15 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "my_list.h"
 
-int	main(int ac, char **av)
+int	my_list_push_front(t_my_list **list, t_my_list *elem)
 {
-	t_so_long	*so_long;
+	t_my_list	*iterator;
 
-	if (my_so_long_init(&so_long) == -1)
-		return (perror("1"), errno);
+	if (!elem || !list)
+		return (-1);
+	iterator = *list;
+	if (!iterator)
+		return (*list = elem, 0);
+	elem->next = iterator;
+	*list = elem;
 	return (0);
 }

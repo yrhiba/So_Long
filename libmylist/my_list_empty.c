@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   my_list_empty.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+        */
+/*   By: yrhiba <yrhiba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 22:16:04 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/24 21:59:53 by yrhiba@stud      ###   ########.fr       */
+/*   Created: 2023/01/09 12:02:09 by yrhiba            #+#    #+#             */
+/*   Updated: 2023/01/09 12:04:36 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "my_list.h"
 
-int	main(int ac, char **av)
+int	my_list_empty(t_my_list *list)
 {
-	t_so_long	*so_long;
-
-	if (my_so_long_init(&so_long) == -1)
-		return (perror("1"), errno);
+	if (!list)
+		return (1);
 	return (0);
 }

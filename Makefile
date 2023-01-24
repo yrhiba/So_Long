@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+         #
+#    By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/27 22:24:25 by yrhiba            #+#    #+#              #
-#    Updated: 2022/12/27 23:35:43 by yrhiba           ###   ########.fr        #
+#    Updated: 2023/01/24 21:59:42 by yrhiba@stud      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,27 +16,39 @@ SRCS = so_long.c
 
 INCS = so_long.h libft/libft.h mlx/mlx.h
 
-OBJS = $(SRCS:.c=.o)
+OBJDIR = obj/
+OBJS = $(addprefix $(OBJDIR), $(SRCS:.c=.o))
+
+COMPILER = cc
+
+OBJFLAGS = -Wall -Wextra -Werror
+OBJIFLAGS = -I libft -I mlx -I libmylist -I .
+
+LIBFLAGS = -Llibft -lft -Llibmylist -lmylist -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 $(NAME) : $(OBJS)
 	make -C libft
+	make -C libmylist
 	make -C mlx
-	$(CC) $(OBJS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(COMPILER) $(OBJS) $(LIBFLAGS) -o $(NAME)
 
 all : $(NAME)
 
-%.o : %.c $(INCS)
-	$(CC) -Wall -Wextra -Werror -I libft -I mlx -c $< -o $@
+$(OBJDIR)%.o : %.c $(INCS)
+	@mkdir -p $(dir $@)
+	$(COMPILER) $(OBJFLAGS) $(OBJIFLAGS) -c $< -o $@
 
 clean :
-	make clean -C mlx
 	make fclean -C libft
-	rm -rf $(OBJS)
+	make fclean -C libmylist
+	make clean -C mlx
+	rm -rf $(OBJDIR)
 
 fclean : clean
 	rm -rf $(NAME)
 
 re : fclean all
 
-.PHONEY : all clean fclean re
- 
+bonus : all
+
+.PHONEY : all clean fclean re bonus

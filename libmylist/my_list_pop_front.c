@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   my_list_pop_front.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+        */
+/*   By: yrhiba <yrhiba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 22:16:04 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/24 21:59:53 by yrhiba@stud      ###   ########.fr       */
+/*   Created: 2023/01/09 14:02:34 by yrhiba            #+#    #+#             */
+/*   Updated: 2023/01/10 21:54:35 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "my_list.h"
 
-int	main(int ac, char **av)
+int	my_list_pop_front(t_my_list **list)
 {
-	t_so_long	*so_long;
+	t_my_list	*iterator;
 
-	if (my_so_long_init(&so_long) == -1)
-		return (perror("1"), errno);
-	return (0);
+	if (!list)
+		return (-1);
+	if (my_list_empty(*list))
+		return (0);
+	iterator = *list;
+	*list = iterator->next;
+	return (free(iterator->data), free(iterator), 0);
 }
