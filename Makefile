@@ -6,30 +6,30 @@
 #    By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/27 22:24:25 by yrhiba            #+#    #+#              #
-#    Updated: 2023/01/24 21:59:42 by yrhiba@stud      ###   ########.fr        #
+#    Updated: 2023/01/25 00:02:28 by yrhiba@stud      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRCS = so_long.c
+SRCS =	so_long.c \
+		parse/my_so_long_init.c
 
-INCS = so_long.h libft/libft.h mlx/mlx.h
+INCS = so_long.h libft/libft.h
 
 OBJDIR = obj/
 OBJS = $(addprefix $(OBJDIR), $(SRCS:.c=.o))
 
 COMPILER = cc
 
-OBJFLAGS = -Wall -Wextra -Werror
-OBJIFLAGS = -I libft -I mlx -I libmylist -I .
+OBJFLAGS = -Wall -Wextra #-Werror
+OBJIFLAGS = -I libft -I libmylist -I .
 
-LIBFLAGS = -Llibft -lft -Llibmylist -lmylist -Lmlx -lmlx -framework OpenGL -framework AppKit
+LIBFLAGS = -Llibft -lft -Llibmylist -lmylist -lmlx -lm -framework OpenGL -framework AppKit
 
 $(NAME) : $(OBJS)
 	make -C libft
 	make -C libmylist
-	make -C mlx
 	$(COMPILER) $(OBJS) $(LIBFLAGS) -o $(NAME)
 
 all : $(NAME)
@@ -41,7 +41,6 @@ $(OBJDIR)%.o : %.c $(INCS)
 clean :
 	make fclean -C libft
 	make fclean -C libmylist
-	make clean -C mlx
 	rm -rf $(OBJDIR)
 
 fclean : clean

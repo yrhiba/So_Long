@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   my_so_long_init.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 22:16:04 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/25 00:04:50 by yrhiba@stud      ###   ########.fr       */
+/*   Created: 2023/01/24 22:00:55 by yrhiba@stud       #+#    #+#             */
+/*   Updated: 2023/01/24 22:27:41 by yrhiba@stud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int ac, char **av)
+static void	dir_init(t_dir *dir)
 {
-	t_so_long	*so_long;
-	
-	void *mlx;
-	void *win;
+	(dir->dc)[0] = 1;
+	(dir->dc)[1] = -1;
+	(dir->dc)[2] = 0;
+	(dir->dc)[3] = 0;
+	(dir->dr)[0] = 0;
+	(dir->dr)[1] = 0;
+	(dir->dr)[2] = -1;
+	(dir->dr)[3] = 1;
+}
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 1920, 1080, "Title");
-
-	if (my_so_long_init(&so_long) == -1)
-		return (perror("error<1>"), errno);
-	mlx_loop(mlx);
-	return (0);
+int	my_so_long_init(t_so_long **so_long)
+{
+	*so_long = (t_so_long *)malloc(sizeof(t_so_long));
+	if (!(*so_long))
+		return (-1);
+	((*so_long)->map).map = (char **)0;
+	return (dir_init(&((*so_long)->dir)), 0);
 }
