@@ -6,7 +6,7 @@
 /*   By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:09:52 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/26 01:55:31 by yrhiba@stud      ###   ########.fr       */
+/*   Updated: 2023/01/26 01:57:38 by yrhiba@stud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_so_long
 	t_mlx_data	mlx;
 	t_map		map;
 	t_dir		dir;
+	size_t		moves;
 
 }				t_so_long;
 
