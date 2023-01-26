@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   map_clear.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 22:16:04 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/26 01:56:19 by yrhiba@stud      ###   ########.fr       */
+/*   Created: 2023/01/26 01:09:20 by yrhiba@stud       #+#    #+#             */
+/*   Updated: 2023/01/26 01:56:34 by yrhiba@stud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	leaks(void)
+void	map_clear_failed_malloc(char **map)
 {
-	system("leaks so_long");
+	int	i;
+
+	i = 0;
+	while (map[i])
+		free(map[i++]);
+	free(map);
 }
 
-int	main(int ac, char **av)
+void	map_clear(t_so_long *so_long)
 {
-	t_so_long	*so_long;
+	size_t	i;
 
-	atexit(leaks);
-	if (so_long_init(&so_long) == -1)
-		return (perror("error<1>"), errno);
-	if (check_map(so_long, ac, av) == -1)
-		return (map_clear(so_long), free(so_long), ft_printf("Error\n"), 0);
-	return (map_clear(so_long), free(so_long), 0);
+	if (!so_long || !((so_long->map).map))
+		return ;
+	i = 0;
+	while (i < so_long->map.height)
+	{
+		free((so_long->map).map[i]);
+		i++;
+	}
+	free((so_long->map).map);
+	(so_long->map).map = 0;
 }
