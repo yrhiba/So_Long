@@ -6,7 +6,7 @@
 /*   By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:09:52 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/26 01:57:38 by yrhiba@stud      ###   ########.fr       */
+/*   Updated: 2023/01/26 18:47:16 by yrhiba@stud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@
 # include <time.h>
 # include <unistd.h>
 
+# define ES '0'
+# define WL '1'
+# define CO 'C'
+# define EX 'E'
+# define PS 'P'
+
 typedef struct s_dir
 {
 	int			dr[4];
@@ -40,6 +46,8 @@ typedef struct s_map
 	size_t		walls;
 	size_t		collectibles;
 	size_t		free_space;
+	size_t		map_exit;
+	size_t		player_start;
 
 }				t_map;
 
@@ -62,6 +70,7 @@ typedef struct s_so_long
 // parsing functions
 int				so_long_init(t_so_long **so_long);
 int				check_map(t_so_long *so_long, int ac, char **av);
+int				check_tiles(t_so_long *so_long);
 
 // get function
 size_t			get_line_width(char *line);
