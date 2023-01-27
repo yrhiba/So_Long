@@ -6,7 +6,7 @@
 /*   By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:23:29 by yrhiba@stud       #+#    #+#             */
-/*   Updated: 2023/01/26 19:05:07 by yrhiba@stud      ###   ########.fr       */
+/*   Updated: 2023/01/27 00:10:42 by yrhiba@stud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ int	check_tiles(t_so_long *so_long)
 	size_t	r;
 	size_t	c;
 
-	r = 0;
-	while (r < (so_long->map).height)
+	r = -1;
+	while (++r < (so_long->map).height)
 	{
-		c = 0;
-		while (c < (so_long->map).width)
+		c = -1;
+		while (++c < (so_long->map).width)
 		{
 			if (((r == 0 || r == ((so_long->map).height - 1)) || (c == 0
 						|| c == ((so_long->map).width - 1)))
@@ -57,9 +57,12 @@ int	check_tiles(t_so_long *so_long)
 				return (-1);
 			if (calc_tile(so_long, (so_long->map).map[r][c]) == -1)
 				return (-1);
-			c++;
+			if ((so_long->map).map[r][c] == PS)
+			{
+					(so_long->player).c = c;
+					(so_long->player).r = r;
+			}
 		}
-		r++;
 	}
 	return (check_requirements(so_long));
 }

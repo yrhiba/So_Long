@@ -6,7 +6,7 @@
 /*   By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:09:52 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/26 18:47:16 by yrhiba@stud      ###   ########.fr       */
+/*   Updated: 2023/01/27 03:15:13 by yrhiba@stud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,20 @@
 # include <time.h>
 # include <unistd.h>
 
+# define ERR "Error\n"
+
 # define ES '0'
 # define WL '1'
 # define CO 'C'
 # define EX 'E'
 # define PS 'P'
+
+typedef struct s_tile
+{
+	size_t		r;
+	size_t		c;
+
+}				t_tile;
 
 typedef struct s_dir
 {
@@ -62,6 +71,8 @@ typedef struct s_so_long
 {
 	t_mlx_data	mlx;
 	t_map		map;
+	t_tile		player;
+	t_tile		enemy;
 	t_dir		dir;
 	size_t		moves;
 
@@ -71,9 +82,13 @@ typedef struct s_so_long
 int				so_long_init(t_so_long **so_long);
 int				check_map(t_so_long *so_long, int ac, char **av);
 int				check_tiles(t_so_long *so_long);
+int				check_paths(t_so_long *so_long);
 
 // get function
 size_t			get_line_width(char *line);
+
+// utils
+void			*tiledup(size_t r, size_t c);
 
 // clear functions
 void			map_clear(t_so_long *so_long);

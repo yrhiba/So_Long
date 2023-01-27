@@ -6,7 +6,7 @@
 #    By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/27 22:24:25 by yrhiba            #+#    #+#              #
-#    Updated: 2023/01/26 19:06:03 by yrhiba@stud      ###   ########.fr        #
+#    Updated: 2023/01/27 03:15:08 by yrhiba@stud      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,12 @@ SRCS =	so_long.c \
 		parse/so_long_init.c \
 		parse/check_map.c \
 		parse/check_tiles.c \
+		parse/check_paths.c \
 		get_funcs/get_line_width.c \
+		utils/tiledup.c \
 		clear/map_clear.c
 
-INCS = so_long.h libft/libft.h
+INCS = so_long.h libft/libft.h libmylist/my_list.h
 
 OBJDIR = obj/
 OBJS = $(addprefix $(OBJDIR), $(SRCS:.c=.o))

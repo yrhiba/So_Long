@@ -6,7 +6,7 @@
 /*   By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 01:09:20 by yrhiba@stud       #+#    #+#             */
-/*   Updated: 2023/01/26 01:56:34 by yrhiba@stud      ###   ########.fr       */
+/*   Updated: 2023/01/27 02:31:04 by yrhiba@stud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,19 @@ void	map_clear(t_so_long *so_long)
 {
 	size_t	i;
 
-	if (!so_long || !((so_long->map).map))
-		return ;
-	i = 0;
-	while (i < so_long->map.height)
+	if ((so_long->map).map)
 	{
-		free((so_long->map).map[i]);
-		i++;
+		i = -1;
+		while (++i < so_long->map.height)
+			free((so_long->map).map[i]);
+		free((so_long->map).map);
+		(so_long->map).map = 0;
 	}
-	free((so_long->map).map);
-	(so_long->map).map = 0;
+	if (!((so_long->map).visited))
+		return ;
+	i = -1;
+	while (++i < so_long->map.height)
+		free((so_long->map).visited[i]);
+	free((so_long->map).visited);
+	(so_long->map).visited = 0;
 }
