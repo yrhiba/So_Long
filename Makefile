@@ -6,7 +6,7 @@
 #    By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/27 22:24:25 by yrhiba            #+#    #+#              #
-#    Updated: 2023/01/27 22:19:37 by yrhiba           ###   ########.fr        #
+#    Updated: 2023/01/28 00:31:01 by yrhiba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ LIBFLAGS = -Llibft -lft -Llibmylist -lmylist -lmlx -lm -framework OpenGL -framew
 $(NAME) : $(OBJS)
 	make -C libft
 	make -C libmylist
-	$(COMPILER) $(OBJS) $(LIBFLAGS) -o $(NAME) #-fsanitize=address
+	$(COMPILER) $(OBJS) $(LIBFLAGS) -o $(NAME) -fsanitize=address
 
 all : $(NAME)
 
