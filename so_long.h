@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+        */
+/*   By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:09:52 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/27 03:15:13 by yrhiba@stud      ###   ########.fr       */
+/*   Updated: 2023/01/27 22:19:49 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_so_long
 	t_tile		enemy;
 	t_dir		dir;
 	size_t		moves;
+	t_my_list	*qrc;
 
 }				t_so_long;
 
@@ -88,10 +89,14 @@ int				check_paths(t_so_long *so_long);
 size_t			get_line_width(char *line);
 
 // utils
+int				map_visited_init(t_so_long *so_long);
+int				bfs_init_data(t_so_long *so_long);
 void			*tiledup(size_t r, size_t c);
 
 // clear functions
 void			map_clear(t_so_long *so_long);
+void			map_visited_clear(t_so_long *so_long);
 void			map_clear_failed_malloc(char **map);
+void			sl_clear(t_so_long **so_long);
 
 #endif

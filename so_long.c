@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+        */
+/*   By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:16:04 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/27 04:37:12 by yrhiba@stud      ###   ########.fr       */
+/*   Updated: 2023/01/27 22:45:13 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,10 @@ int	main(int ac, char **av)
 	if (so_long_init(&so_long) == -1)
 		return (ft_printf(ERR), 0);
 	if (check_map(so_long, ac, av) == -1)
-		return (map_clear(so_long), free(so_long), ft_printf(ERR), 0);
+		return (sl_clear(&so_long), ft_printf(ERR), 0);
 	if (check_tiles(so_long) == -1)
-		return (map_clear(so_long), free(so_long), ft_printf(ERR), 0);
+		return (sl_clear(&so_long), ft_printf(ERR), 0);
 	if (check_paths(so_long) == -1)
-	{
-		ft_printf("errorr paths!\n");
-		return (map_clear(so_long), free(so_long), ft_printf(ERR), 0);
-	}
-	return (map_clear(so_long), free(so_long), 0);
+		return (sl_clear(&so_long), ft_printf(ERR), 0);
+	return (sl_clear(&so_long), 0);
 }

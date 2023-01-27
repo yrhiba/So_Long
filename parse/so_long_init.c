@@ -6,7 +6,7 @@
 /*   By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 22:00:55 by yrhiba@stud       #+#    #+#             */
-/*   Updated: 2023/01/26 18:42:32 by yrhiba@stud      ###   ########.fr       */
+/*   Updated: 2023/01/27 16:44:34 by yrhiba@stud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ int	so_long_init(t_so_long **so_long)
 	((*so_long)->map).map_exit = 0;
 	((*so_long)->map).player_start = 0;
 	(*so_long)->moves = 0;
-	return (dir_init(&((*so_long)->dir)), 0);
+	return (dir_init(&((*so_long)->dir)), my_list_init(&((*so_long)->qrc)), 0);
 }

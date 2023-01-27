@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+         #
+#    By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/27 22:24:25 by yrhiba            #+#    #+#              #
-#    Updated: 2023/01/27 03:15:08 by yrhiba@stud      ###   ########.fr        #
+#    Updated: 2023/01/27 22:19:37 by yrhiba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,10 @@ SRCS =	so_long.c \
 		parse/check_paths.c \
 		get_funcs/get_line_width.c \
 		utils/tiledup.c \
-		clear/map_clear.c
+		utils/map_visited_init.c \
+		utils/bfs_init_data.c \
+		clear/map_clear.c \
+		clear/sl_clear.c
 
 INCS = so_long.h libft/libft.h libmylist/my_list.h
 
@@ -36,7 +39,7 @@ LIBFLAGS = -Llibft -lft -Llibmylist -lmylist -lmlx -lm -framework OpenGL -framew
 $(NAME) : $(OBJS)
 	make -C libft
 	make -C libmylist
-	$(COMPILER) $(OBJS) $(LIBFLAGS) -o $(NAME)
+	$(COMPILER) $(OBJS) $(LIBFLAGS) -o $(NAME) #-fsanitize=address
 
 all : $(NAME)
 
