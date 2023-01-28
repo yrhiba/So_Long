@@ -6,7 +6,7 @@
 /*   By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:09:52 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/27 22:19:49 by yrhiba           ###   ########.fr       */
+/*   Updated: 2023/01/28 23:34:18 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <time.h>
 # include <unistd.h>
 
+# define WIN_TITLE "so long"
+
 # define ERR "Error\n"
 
 # define ES '0'
@@ -31,6 +33,16 @@
 # define CO 'C'
 # define EX 'E'
 # define PS 'P'
+
+# define TILE_SIZE 150
+
+# define PLAYER_PATH "textures/player.xpm"
+# define EXIT_CLOSE_PATH "textures/exit_close.xpm"
+# define EXIT_OPEN_PATH "textures/exit_open.xpm"
+# define COLLECTIBLE_PATH "textures/collectible.xpm"
+# define FREE_SPACE_PATH "textures/free_space.xpm"
+# define WALL_PATH "textures/wall.xpm"
+# define ENEMY_PATH "textures/enemy.xpm"
 
 typedef struct s_tile
 {
@@ -50,6 +62,7 @@ typedef struct s_map
 {
 	char		**map;
 	char		**visited;
+	int			tile_size;
 	size_t		width;
 	size_t		height;
 	size_t		walls;
@@ -60,10 +73,24 @@ typedef struct s_map
 
 }				t_map;
 
+typedef struct s_imgs
+{
+	void		*col;
+	void		*player;
+	void		*exit_close;
+	void		*exit_open;
+	void		*wall;
+	void		*free_space;
+	void		*enemy;
+}				t_imgs;
+
 typedef struct s_mlx_data
 {
 	void		*mlx;
 	void		*win;
+	int			widht;
+	int			height;
+	t_imgs		imgs;
 
 }				t_mlx_data;
 
@@ -85,6 +112,9 @@ int				check_map(t_so_long *so_long, int ac, char **av);
 int				check_tiles(t_so_long *so_long);
 int				check_paths(t_so_long *so_long);
 
+// my mlx functions
+int				my_mlx_init(t_so_long *so_long, void **mlx);
+
 // get function
 size_t			get_line_width(char *line);
 
@@ -92,6 +122,7 @@ size_t			get_line_width(char *line);
 int				map_visited_init(t_so_long *so_long);
 int				bfs_init_data(t_so_long *so_long);
 void			*tiledup(size_t r, size_t c);
+void			calc_win_wh(t_so_long *so_long);
 
 // clear functions
 void			map_clear(t_so_long *so_long);

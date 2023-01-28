@@ -6,13 +6,14 @@
 #    By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/27 22:24:25 by yrhiba            #+#    #+#              #
-#    Updated: 2023/01/28 00:31:01 by yrhiba           ###   ########.fr        #
+#    Updated: 2023/01/28 21:48:23 by yrhiba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 SRCS =	so_long.c \
+		my_mlx/my_mlx_init.c \
 		parse/so_long_init.c \
 		parse/check_map.c \
 		parse/check_tiles.c \
@@ -21,6 +22,7 @@ SRCS =	so_long.c \
 		utils/tiledup.c \
 		utils/map_visited_init.c \
 		utils/bfs_init_data.c \
+		utils/calc_win_wh.c \
 		clear/map_clear.c \
 		clear/sl_clear.c
 
@@ -39,7 +41,7 @@ LIBFLAGS = -Llibft -lft -Llibmylist -lmylist -lmlx -lm -framework OpenGL -framew
 $(NAME) : $(OBJS)
 	make -C libft
 	make -C libmylist
-	$(COMPILER) $(OBJS) $(LIBFLAGS) -o $(NAME) -fsanitize=address
+	$(COMPILER) $(OBJS) $(LIBFLAGS) -o $(NAME) #-fsanitize=address
 
 all : $(NAME)
 
