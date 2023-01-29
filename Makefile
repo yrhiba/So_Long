@@ -6,7 +6,7 @@
 #    By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/27 22:24:25 by yrhiba            #+#    #+#              #
-#    Updated: 2023/01/29 05:35:18 by yrhiba           ###   ########.fr        #
+#    Updated: 2023/01/29 05:45:50 by yrhiba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS =	so_long.c \
 		moves/go_left.c \
 		moves/go_right.c \
 		my_mlx/my_mlx_init.c \
+		my_mlx/my_mlx_put_frame.c \
 		parse/so_long_init.c \
 		parse/check_av.c \
 		parse/check_map.c \

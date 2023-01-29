@@ -6,7 +6,7 @@
 /*   By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:09:52 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/29 05:03:45 by yrhiba           ###   ########.fr       */
+/*   Updated: 2023/01/29 06:06:25 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@
 # define WIN_TITLE "so long"
 
 # define ERR "Error\n"
+
+#define DOWN 3
+#define UP 2
+#define RIGHT 1
+#define LEFT 0
 
 # define ES '0'
 # define WL '1'
@@ -129,6 +134,7 @@ int				go_right(t_so_long *sl);
 
 // my mlx functions
 int				my_mlx_init(t_so_long *so_long, void **mlx);
+int				my_mlx_put_frame(t_so_long *sl);
 
 // get function
 size_t			get_line_width(char *line);
@@ -139,6 +145,7 @@ void			map_visited_init_val(t_so_long *so_long);
 int				bfs_init_data(t_so_long *so_long);
 void			*tiledup(size_t r, size_t c);
 void			calc_win_wh(t_so_long *so_long);
+void			put_frame(t_so_long *so_long);
 
 // clear functions
 void			map_clear(t_so_long *so_long);
