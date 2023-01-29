@@ -6,17 +6,15 @@
 #    By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/27 22:24:25 by yrhiba            #+#    #+#              #
-#    Updated: 2023/01/29 05:45:50 by yrhiba           ###   ########.fr        #
+#    Updated: 2023/01/29 09:26:31 by yrhiba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 SRCS =	so_long.c \
-		moves/go_up.c \
-		moves/go_down.c \
-		moves/go_left.c \
-		moves/go_right.c \
+		moves/go_dir.c \
+		moves/enemy_move.c \
 		my_mlx/my_mlx_init.c \
 		my_mlx/my_mlx_put_frame.c \
 		parse/so_long_init.c \

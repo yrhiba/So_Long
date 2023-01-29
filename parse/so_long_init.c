@@ -6,7 +6,7 @@
 /*   By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 22:00:55 by yrhiba@stud       #+#    #+#             */
-/*   Updated: 2023/01/28 23:17:11 by yrhiba           ###   ########.fr       */
+/*   Updated: 2023/01/29 11:54:48 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static void	my_mlx_ptr_init(t_so_long *so_long)
 	so_long->mlx.imgs.exit_open = NULL;
 	so_long->mlx.imgs.wall = NULL;
 	so_long->mlx.imgs.free_space = NULL;
-	so_long->mlx.imgs.enemy = NULL;
+	so_long->mlx.imgs.enemy1 = NULL;
+	so_long->mlx.imgs.enemy2 = NULL;
 }
 
 int	so_long_init(t_so_long **so_long)
@@ -51,7 +52,10 @@ int	so_long_init(t_so_long **so_long)
 	((*so_long)->map).free_space = 0;
 	((*so_long)->map).map_exit = 0;
 	((*so_long)->map).player_start = 0;
+	(*so_long)->count = 0;
+	(*so_long)->count2 = 0;
 	(*so_long)->moves = 0;
+	my_list_init(&(*so_long)->enemys);
 	my_mlx_ptr_init(*so_long);
 	return (dir_init(&((*so_long)->dir)), my_list_init(&((*so_long)->qrc)), 0);
 }

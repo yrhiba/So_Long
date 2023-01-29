@@ -6,7 +6,7 @@
 /*   By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:40:39 by yrhiba@stud       #+#    #+#             */
-/*   Updated: 2023/01/28 23:36:00 by yrhiba           ###   ########.fr       */
+/*   Updated: 2023/01/29 10:57:27 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ static void	my_destroy_imgs(t_so_long *so_long)
 {
 	if (so_long->mlx.imgs.col)
 		mlx_destroy_image(so_long->mlx.mlx, so_long->mlx.imgs.col);
-	if (so_long->mlx.imgs.enemy)
-		mlx_destroy_image(so_long->mlx.mlx, so_long->mlx.imgs.enemy);
+	if (so_long->mlx.imgs.enemy1)
+		mlx_destroy_image(so_long->mlx.mlx, so_long->mlx.imgs.enemy1);
+	if (so_long->mlx.imgs.enemy2)
+		mlx_destroy_image(so_long->mlx.mlx, so_long->mlx.imgs.enemy2);
 	if (so_long->mlx.imgs.exit_close)
 		mlx_destroy_image(so_long->mlx.mlx, so_long->mlx.imgs.exit_close);
 	if (so_long->mlx.imgs.exit_open)
@@ -36,6 +38,7 @@ void	sl_clear(t_so_long **so_long)
 	if ((*so_long)->mlx.win)
 		mlx_destroy_window((*so_long)->mlx.mlx, (*so_long)->mlx.win);
 	my_list_clear(&((*so_long)->qrc));
+	my_list_clear(&((*so_long)->enemys));
 	map_clear(*so_long);
 	map_visited_clear(*so_long);
 	free(*so_long);

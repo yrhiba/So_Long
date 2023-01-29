@@ -6,7 +6,7 @@
 /*   By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:09:52 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/29 06:06:25 by yrhiba           ###   ########.fr       */
+/*   Updated: 2023/01/29 12:02:37 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@
 
 # define ERR "Error\n"
 
-#define DOWN 3
-#define UP 2
-#define RIGHT 1
-#define LEFT 0
+# define DOWN 3
+# define UP 2
+# define LEFT 1
+# define RIGHT 0
 
 # define ES '0'
 # define WL '1'
@@ -48,7 +48,8 @@
 # define COLLECTIBLE_PATH "textures/collectible.xpm"
 # define FREE_SPACE_PATH "textures/free_space.xpm"
 # define WALL_PATH "textures/wall.xpm"
-# define ENEMY_PATH "textures/enemy.xpm"
+# define ENEMY1_PATH "textures/enemy_1.xpm"
+# define ENEMY2_PATH "textures/enemy_2.xpm"
 
 # define KEY_UP 126
 # define KEY_DOWN 125
@@ -62,6 +63,15 @@ typedef struct s_tile
 	size_t		c;
 
 }				t_tile;
+
+typedef struct s_enemey
+{
+	size_t		r;
+	size_t		c;
+	int			dir;
+	int			count;
+
+}				t_enemey;
 
 typedef struct s_dir
 {
@@ -94,7 +104,8 @@ typedef struct s_imgs
 	void		*exit_open;
 	void		*wall;
 	void		*free_space;
-	void		*enemy;
+	void		*enemy1;
+	void		*enemy2;
 }				t_imgs;
 
 typedef struct s_mlx_data
@@ -112,10 +123,13 @@ typedef struct s_so_long
 	t_mlx_data	mlx;
 	t_map		map;
 	t_tile		player;
-	t_tile		enemy;
+	t_tile		free_tile;
+	t_my_list	*enemys;
 	t_dir		dir;
 	size_t		moves;
 	t_my_list	*qrc;
+	size_t		count;
+	size_t		count2;
 
 }				t_so_long;
 
@@ -127,10 +141,8 @@ int				check_tiles(t_so_long *so_long);
 int				check_paths(t_so_long *so_long);
 
 // moves
-int				go_up(t_so_long *sl);
-int				go_down(t_so_long *sl);
-int				go_left(t_so_long *sl);
-int				go_right(t_so_long *sl);
+int				go_dir(t_so_long *sl, int dir);
+int				enemy_move(t_so_long *sl);
 
 // my mlx functions
 int				my_mlx_init(t_so_long *so_long, void **mlx);
@@ -146,6 +158,7 @@ int				bfs_init_data(t_so_long *so_long);
 void			*tiledup(size_t r, size_t c);
 void			calc_win_wh(t_so_long *so_long);
 void			put_frame(t_so_long *so_long);
+void			*enemydup(size_t r, size_t c);
 
 // clear functions
 void			map_clear(t_so_long *so_long);

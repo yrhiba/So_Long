@@ -6,7 +6,7 @@
 /*   By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 20:34:41 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/29 05:43:28 by yrhiba           ###   ########.fr       */
+/*   Updated: 2023/01/29 09:19:47 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ static int	check_imgs(t_so_long *so_long)
 {
 	if (!(so_long->mlx.imgs.col))
 		return (-1);
-	if (!(so_long->mlx.imgs.enemy))
+	if (!(so_long->mlx.imgs.enemy1))
+		return (-1);
+	if (!(so_long->mlx.imgs.enemy2))
 		return (-1);
 	if (!(so_long->mlx.imgs.exit_close))
 		return (-1);
@@ -51,9 +53,32 @@ static int	load_images(t_so_long *so_long)
 			&(so_long->map.tile_size), &(so_long->map.tile_size));
 	so_long->mlx.imgs.wall = mlx_xpm_file_to_image(so_long->mlx.mlx, WALL_PATH,
 			&(so_long->map.tile_size), &(so_long->map.tile_size));
-	so_long->mlx.imgs.enemy = mlx_xpm_file_to_image(so_long->mlx.mlx,
-			ENEMY_PATH, &(so_long->map.tile_size), &(so_long->map.tile_size));
+	so_long->mlx.imgs.enemy1 = mlx_xpm_file_to_image(so_long->mlx.mlx,
+			ENEMY1_PATH, &(so_long->map.tile_size), &(so_long->map.tile_size));
+	so_long->mlx.imgs.enemy2 = mlx_xpm_file_to_image(so_long->mlx.mlx,
+			ENEMY2_PATH, &(so_long->map.tile_size), &(so_long->map.tile_size));
 	return (check_imgs(so_long));
+}
+
+static size_t	calc_col(t_so_long *sl)
+{
+	size_t	i;
+	size_t	r;
+	size_t	c;
+
+	i = 0;
+	r = 0;
+	while (r < sl->map.height)
+	{
+		c = 0;
+		while (c < sl->map.width)
+		{
+			if (sl->map.map[r][c++] == CO)
+				i++;
+		}
+		r++;
+	}
+	return (i);
 }
 
 int	my_mlx_init(t_so_long *so_long, void **mlx)
@@ -63,6 +88,7 @@ int	my_mlx_init(t_so_long *so_long, void **mlx)
 		return (-1);
 	*mlx = so_long->mlx.mlx;
 	calc_win_wh(so_long);
+	so_long->map.collectibles = calc_col(so_long);
 	so_long->mlx.win = mlx_new_window(so_long->mlx.mlx, so_long->mlx.widht,
 			so_long->mlx.height, WIN_TITLE);
 	if (!(so_long->mlx.win))

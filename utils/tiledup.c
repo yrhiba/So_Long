@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tiledup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+        */
+/*   By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 02:17:39 by yrhiba@stud       #+#    #+#             */
-/*   Updated: 2023/01/27 04:12:48 by yrhiba@stud      ###   ########.fr       */
+/*   Updated: 2023/01/29 11:44:53 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,15 @@ void	*tiledup(size_t r, size_t c)
 	if (!tile)
 		return ((t_tile *)0);
 	return (tile->c = c, tile->r = r, (void *)tile);
+}
+
+void	*enemydup(size_t r, size_t c)
+{
+	t_enemey	*enemy;
+
+	enemy = (t_enemey *)malloc(sizeof(t_enemey));
+	if (!enemy)
+		return ((t_enemey *)0);
+	enemy->count = -3;
+	return (enemy->c = c, enemy->r = r, enemy->dir = 0, (void *)enemy);
 }

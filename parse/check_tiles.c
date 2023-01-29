@@ -6,7 +6,7 @@
 /*   By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:23:29 by yrhiba@stud       #+#    #+#             */
-/*   Updated: 2023/01/29 02:16:59 by yrhiba           ###   ########.fr       */
+/*   Updated: 2023/01/29 12:03:34 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,27 @@ static int	calc_tile(t_so_long *so_long, char tile)
 	return (0);
 }
 
+static int	add_if(t_so_long *sl, size_t c, size_t r)
+{
+	if ((sl->map).map[r][c] == PS)
+	{
+		(sl->player).c = c;
+		(sl->player).r = r;
+	}
+	else if ((sl->map).map[r][c] == OP)
+	{
+		if (my_list_push_back(&(sl->enemys), my_list_new_elem(enemydup(r, c)))
+			== -1)
+			return (-1);
+	}
+	else if ((sl->map).map[r][c] == ES)
+	{
+		sl->free_tile.c = c;
+		sl->free_tile.r = r;
+	}
+	return (0);
+}
+
 int	check_tiles(t_so_long *so_long)
 {
 	size_t	r;
@@ -59,11 +80,8 @@ int	check_tiles(t_so_long *so_long)
 				return (-1);
 			if (calc_tile(so_long, (so_long->map).map[r][c]) == -1)
 				return (-1);
-			if ((so_long->map).map[r][c] == PS)
-			{
-					(so_long->player).c = c;
-					(so_long->player).r = r;
-			}
+			if (add_if(so_long, c, r) == -1)
+				return (-1);
 			c++;
 		}
 		r++;
