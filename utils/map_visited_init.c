@@ -6,11 +6,26 @@
 /*   By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 22:12:57 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/27 22:13:41 by yrhiba           ###   ########.fr       */
+/*   Updated: 2023/01/29 00:43:51 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	map_visited_init_val(t_so_long *so_long)
+{
+	size_t	r;
+	size_t	c;
+
+	r = 0;
+	while (r < so_long->map.height)
+	{
+		c = 0;
+		while (c < so_long->map.width)
+			so_long->map.visited[r][c++] = '0';
+		r++;
+	}
+}
 
 int	map_visited_init(t_so_long *so_long)
 {
@@ -18,7 +33,7 @@ int	map_visited_init(t_so_long *so_long)
 	size_t	r;
 	size_t	c;
 
-	map = (char **) malloc(sizeof(char *) * so_long->map.height);
+	map = (char **)malloc(sizeof(char *) * so_long->map.height);
 	if (!map)
 		return (-1);
 	r = 0;

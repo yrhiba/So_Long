@@ -6,7 +6,7 @@
 /*   By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:09:52 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/28 23:34:18 by yrhiba           ###   ########.fr       */
+/*   Updated: 2023/01/29 04:48:13 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@
 # define CO 'C'
 # define EX 'E'
 # define PS 'P'
+# define OP 'X'
 
-# define TILE_SIZE 150
+# define TILE_SIZE 100
 
 # define PLAYER_PATH "textures/player.xpm"
 # define EXIT_CLOSE_PATH "textures/exit_close.xpm"
@@ -43,6 +44,12 @@
 # define FREE_SPACE_PATH "textures/free_space.xpm"
 # define WALL_PATH "textures/wall.xpm"
 # define ENEMY_PATH "textures/enemy.xpm"
+
+# define KEY_UP 126
+# define KEY_DOWN 125
+# define KEY_RIGHT 124
+# define KEY_LEFT 123
+# define ESC 53
 
 typedef struct s_tile
 {
@@ -70,6 +77,7 @@ typedef struct s_map
 	size_t		free_space;
 	size_t		map_exit;
 	size_t		player_start;
+	size_t		enemy;
 
 }				t_map;
 
@@ -108,6 +116,7 @@ typedef struct s_so_long
 
 // parsing functions
 int				so_long_init(t_so_long **so_long);
+int				check_av(int ac, char **av);
 int				check_map(t_so_long *so_long, int ac, char **av);
 int				check_tiles(t_so_long *so_long);
 int				check_paths(t_so_long *so_long);
@@ -120,6 +129,7 @@ size_t			get_line_width(char *line);
 
 // utils
 int				map_visited_init(t_so_long *so_long);
+void			map_visited_init_val(t_so_long *so_long);
 int				bfs_init_data(t_so_long *so_long);
 void			*tiledup(size_t r, size_t c);
 void			calc_win_wh(t_so_long *so_long);

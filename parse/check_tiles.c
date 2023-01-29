@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_tiles.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrhiba@student.1337.ma <yrhiba>            +#+  +:+       +#+        */
+/*   By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:23:29 by yrhiba@stud       #+#    #+#             */
-/*   Updated: 2023/01/27 16:56:05 by yrhiba@stud      ###   ########.fr       */
+/*   Updated: 2023/01/29 02:16:59 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int	calc_tile(t_so_long *so_long, char tile)
 		(so_long->map).map_exit++;
 	else if (tile == PS)
 		return ((so_long->map).player_start++, (so_long->map).free_space++, 0);
+	else if (tile == OP)
+		return ((so_long->map).enemy++, 0);
 	else
 		return (-1);
 	return (0);

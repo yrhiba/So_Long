@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_list_back.c                                     :+:      :+:    :+:   */
+/*   check_av.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 12:07:34 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/29 04:48:54 by yrhiba           ###   ########.fr       */
+/*   Created: 2023/01/29 03:26:59 by yrhiba            #+#    #+#             */
+/*   Updated: 2023/01/29 03:34:00 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_list.h"
+#include "so_long.h"
 
-void	*my_list_back(t_my_list *list)
+int	check_av(int ac, char **av)
 {
-	t_my_list	*iterator;
+	size_t	i;
 
-	iterator = list;
-	if (!iterator)
-		return (NULL);
-	while (iterator->next)
-		iterator = iterator->next;
-	return (iterator->data);
+	if (ac != 2)
+		return (-1);
+	i = ft_strlen(av[1]);
+	if (i < 5)
+		return (-1);
+	if (av[1][i - 1] != 'r' || av[1][i - 2] != 'e' || av[1][i - 3] != 'b'
+		|| av[1][i - 4] != '.')
+		return (-1);
+	return (0);
 }
