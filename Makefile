@@ -6,7 +6,7 @@
 #    By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/27 22:24:25 by yrhiba            #+#    #+#              #
-#    Updated: 2023/01/29 09:26:31 by yrhiba           ###   ########.fr        #
+#    Updated: 2023/01/29 12:18:59 by yrhiba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ OBJS = $(addprefix $(OBJDIR), $(SRCS:.c=.o))
 
 COMPILER = cc
 
-OBJFLAGS = -Wall -Wextra #-Werror
+OBJFLAGS = -Wall -Wextra -Werror
 OBJIFLAGS = -I libft -I libmylist -I .
 
 LIBFLAGS = -Llibft -lft -Llibmylist -lmylist -lmlx -lm -framework OpenGL -framework AppKit
