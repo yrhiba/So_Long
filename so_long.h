@@ -6,7 +6,7 @@
 /*   By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:09:52 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/29 04:48:13 by yrhiba           ###   ########.fr       */
+/*   Updated: 2023/01/29 05:03:45 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,12 @@ int				check_av(int ac, char **av);
 int				check_map(t_so_long *so_long, int ac, char **av);
 int				check_tiles(t_so_long *so_long);
 int				check_paths(t_so_long *so_long);
+
+// moves
+int				go_up(t_so_long *sl);
+int				go_down(t_so_long *sl);
+int				go_left(t_so_long *sl);
+int				go_right(t_so_long *sl);
 
 // my mlx functions
 int				my_mlx_init(t_so_long *so_long, void **mlx);

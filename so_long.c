@@ -6,7 +6,7 @@
 /*   By: yrhiba <yrhiba@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:16:04 by yrhiba            #+#    #+#             */
-/*   Updated: 2023/01/29 03:39:52 by yrhiba           ###   ########.fr       */
+/*   Updated: 2023/01/29 05:07:05 by yrhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,14 @@ static int	key_press(int keycode, t_so_long *sl)
 {
 	if (keycode == ESC)
 		sl_clear(&sl);
-	mlx_clear_window(sl->mlx.mlx, sl->mlx.win);
-	mlx_string_put(sl->mlx.mlx, sl->mlx.win, 0, 0, 255, "hello");
+	else if (keycode == KEY_UP)
+		go_up(sl);
+	else if (keycode == KEY_DOWN)
+		go_down(sl);
+	else if (keycode == KEY_LEFT)
+		go_left(sl);
+	else if (keycode == KEY_RIGHT)
+		go_right(sl);
 	return (0);
 }
 
